@@ -9,6 +9,9 @@ namespace addressbook_web_tests
         [TestMethod]
         public void TestMethod1()
         {
+            Square s1 = new Square();
+            Square s2 = new Square();
+            Square s3 = s1;
         }
     }
 }

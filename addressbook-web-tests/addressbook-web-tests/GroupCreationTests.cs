@@ -42,6 +42,7 @@ namespace WebAddressbookTests
             Assert.AreEqual("", verificationErrors.ToString());
         }
 
+        // Первый тест
         [Test]
         public void GroupCreationTest()
         {
