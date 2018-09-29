@@ -95,6 +95,11 @@ namespace WebAddressbookTests
             driver.FindElement(By.LinkText("groups")).Click();
         }
 
+        private void GoToNewContactPage()
+        {
+            driver.FindElement(By.LinkText("add new")).Click();
+        }
+
         private void Login(AccountData account)
         {
             driver.FindElement(By.Name("user")).Click();
