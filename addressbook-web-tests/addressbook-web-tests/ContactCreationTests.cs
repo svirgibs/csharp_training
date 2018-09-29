@@ -51,16 +51,21 @@ namespace WebAddressbookTests
             Login(new AccountData("admin", "secret"));
             // Переход на страницу создания контакта
             GoToNewContactPage();
-            // Заполнение полей формыы
+            // Заполнение полей формы
             ContactData contact = new ContactData("Denis");
             contact.MiddleName = "Timourovich";
             contact.LastName = "Yavorskiy";
             FillContractForm(contact);
             // Нажатие на кнопку Enter
-            driver.FindElement(By.Name("submit")).Click();
+            ContactNewSubmit();
             // Разлогин
             Logout();
 
+        }
+
+        private void ContactNewSubmit()
+        {
+            driver.FindElement(By.Name("submit")).Click();
         }
 
         private void FillContractForm(ContactData contact)
