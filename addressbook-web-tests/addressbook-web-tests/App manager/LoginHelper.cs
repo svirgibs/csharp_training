@@ -15,7 +15,8 @@ namespace WebAddressbookTests
         {
 
         }
-
+        
+        // Логин
         public void Login(AccountData account)
         {
             if (IsLoggedIn())
