@@ -7,7 +7,7 @@ using NUnit.Framework;
 namespace WebAddressbookTests
 {
     [TestFixture]
-    public class GroupCreationTests : TestBase
+    public class GroupCreationTests : AuthTestBase
     {
         // Тест. Создание группы
         [Test]
@@ -18,7 +18,6 @@ namespace WebAddressbookTests
             group.Footer = "fff";
 
             app.Groups.Create(group);
-            app.Auth.Logout();
         }
 
         // Тест. Создание группы (с пустыми полями)
@@ -30,7 +29,6 @@ namespace WebAddressbookTests
             group.Footer = "";
 
             app.Groups.Create(group);
-            app.Auth.Logout();
         }
     }
 }

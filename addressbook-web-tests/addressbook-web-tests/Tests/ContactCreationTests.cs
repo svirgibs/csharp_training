@@ -11,7 +11,7 @@ using OpenQA.Selenium.Support.UI;
 namespace WebAddressbookTests
 {
     [TestFixture]
-    public class ContactCreationTests : TestBase
+    public class ContactCreationTests : AuthTestBase
     {
         // Тест. Создание контакта
         [Test]
@@ -22,7 +22,6 @@ namespace WebAddressbookTests
             contact.LastName = "Yavorskiy";
 
             app.Contacts.Create(contact);
-            app.Auth.Logout();
         }
 
         // Тест. Создание контакта (с пустыми полями)
@@ -34,7 +33,6 @@ namespace WebAddressbookTests
             contact.LastName = "";
 
             app.Contacts.Create(contact);
-            app.Auth.Logout();
         }
 
 
