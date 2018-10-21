@@ -31,6 +31,8 @@ namespace WebAddressbookTests
         {
             manager.Navigator.GoToGroupsPage();
 
+            CreateGroupForTests();
+
             SelectGroup(v);
             InitGroupModification();
             FillGroupForm(newData);
@@ -43,10 +45,29 @@ namespace WebAddressbookTests
         {
             manager.Navigator.GoToGroupsPage();
 
+            CreateGroupForTests();
+
             SelectGroup(v);
             RemoveGroup();
             ReturnToGroupsPage();
             return this;
+        }
+
+        private void CreateGroupForTests()
+        {
+            if (IsGroupCreated() == false)
+            {
+                GroupData group = new GroupData("aaa");
+                group.Header = "ddd";
+                group.Footer = "fff";
+
+                Create(group);
+            }
+        }
+
+        public bool IsGroupCreated()
+        {
+            return IsElementPresent(By.XPath("(//input[@name='selected[]'])"));
         }
 
 

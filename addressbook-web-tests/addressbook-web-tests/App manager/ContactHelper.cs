@@ -22,12 +22,15 @@ namespace WebAddressbookTests
 
             FillContactForm(contact);
             ContactNewSubmit();
+            manager.Navigator.GoToHomePage();
             return this;
         }
 
         public ContactHelper Modify(int v, ContactData newData)
         {
             manager.Navigator.GoToHomePage();
+
+            CreateContactForTests();
 
             SelectContact(v);
             InitContactModification();
@@ -41,9 +44,28 @@ namespace WebAddressbookTests
         {
             manager.Navigator.GoToHomePage();
 
+            CreateContactForTests();
+
             SelectContact(v);
             DeleteContact();
             return this;
+        }
+
+        private void CreateContactForTests()
+        {
+            if (IsContactCreated() == false)
+            {
+                ContactData contact = new ContactData("Denis");
+                contact.MiddleName = "Timourovich";
+                contact.LastName = "Yavorskiy";
+
+                Create(contact);
+            }
+        }
+
+        public bool IsContactCreated()
+        {
+            return IsElementPresent(By.XPath("(//input[@name='selected[]'])"));
         }
 
         public ContactHelper ContactNewSubmit()
