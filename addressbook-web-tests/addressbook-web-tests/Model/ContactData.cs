@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WebAddressbookTests
 {
-    public class ContactData
+    public class ContactData //: IEquatable<ContactData>, IComparable<ContactData>
     {
         private string firstname;
         private string middlename = "";
@@ -27,6 +27,20 @@ namespace WebAddressbookTests
         public ContactData(string firstname)
         {
             this.firstname = firstname;
+        }
+
+        public bool Equals(ContactData otherFirstName)
+        {
+            if (Object.ReferenceEquals(otherFirstName, null))
+            {
+                return false;
+            }
+            if (Object.ReferenceEquals(this, otherFirstName))
+            {
+                return true;
+            }
+
+            return FirstName == otherFirstName.FirstName;           
         }
 
         public string FirstName
