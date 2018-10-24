@@ -22,12 +22,12 @@ namespace WebAddressbookTests
             contact.MiddleName = "Timourovich";
             contact.LastName = "Yavorskiy";
 
-            List<ContactData> oldContacts = app.Contacts.GetContactList();
+            //List<ContactData> oldContacts = app.Contacts.GetContactList();
 
             app.Contacts.Create(contact);
 
-            List<ContactData> newContacts = app.Contacts.GetContactList();
-            Assert.AreEqual(oldContacts, newContacts);
+            //List<ContactData> newContacts = app.Contacts.GetContactList();
+            //Assert.AreEqual(oldContacts, newContacts);
         }
 
         // Тест. Создание контакта (с пустыми полями)

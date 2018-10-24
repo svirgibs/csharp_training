@@ -48,7 +48,7 @@ namespace WebAddressbookTests
             Assert.AreEqual(oldGroups, newGroups);
         }
 
-        [Test]
+        //[Test]
         public void BadNameGroupCreationTest()
         {
             GroupData group = new GroupData("a'a");

@@ -29,9 +29,7 @@ namespace WebAddressbookTests
 
         public GroupHelper Modify(int v, GroupData newData)
         {
-            manager.Navigator.GoToGroupsPage();
-
-            CreateGroupForTests();
+            manager.Navigator.GoToGroupsPage();           
 
             SelectGroup(v);
             InitGroupModification();
@@ -43,9 +41,7 @@ namespace WebAddressbookTests
 
         public GroupHelper Remove(int v)
         {
-            manager.Navigator.GoToGroupsPage();
-
-            CreateGroupForTests();
+            manager.Navigator.GoToGroupsPage();   
 
             SelectGroup(v);
             RemoveGroup();
@@ -53,10 +49,12 @@ namespace WebAddressbookTests
             return this;
         }
 
-        private void CreateGroupForTests()
+        public void CreateGroupForTests()
         {
+
             if (IsGroupCreated() == false)
             {
+                manager.Navigator.GoToGroupsPage();
                 GroupData group = new GroupData("aaa");
                 group.Header = "ddd";
                 group.Footer = "fff";
