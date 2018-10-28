@@ -15,14 +15,14 @@ namespace WebAddressbookTests
         {
             app.Contacts.CreateContactForTests();
 
-            //List<ContactData> oldContacts = app.Contacts.GetContactList();
+            List<ContactData> oldContacts = app.Contacts.GetContactList();
 
             app.Contacts.Remove(0);
 
-            //List<ContactData> newContacts = app.Contacts.GetContactList();
+            List<ContactData> newContacts = app.Contacts.GetContactList();
 
-            //oldContacts.RemoveAt(0);
-            //Assert.AreEqual(oldContacts, newContacts);
+            oldContacts.RemoveAt(0);
+            Assert.AreEqual(oldContacts, newContacts);
         }
     }
 }
