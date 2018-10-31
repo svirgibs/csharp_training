@@ -46,25 +46,37 @@ namespace WebAddressbookTests
             return this;
         }
 
+        private List<ContactData> contactCache = null;
+
         public List<ContactData> GetContactList()
         {
-            List<ContactData> contacts = new List<ContactData>();
-            manager.Navigator.GoToHomePage();
-            ICollection<IWebElement> elements = driver.FindElements(By.CssSelector("tr[name=entry]"));
-
-            foreach (IWebElement element in elements)
+            if (contactCache == null)
             {
-                var cells = element.FindElements(By.CssSelector("td"));
-                contacts.Add(new ContactData(cells[2].Text, cells[1].Text));
+                contactCache = new List<ContactData>();
+                manager.Navigator.GoToHomePage();
+
+                ICollection<IWebElement> elements = driver.FindElements(By.CssSelector("tr[name=entry]"));
+
+                foreach (IWebElement element in elements)
+                {
+                    contactCache.Add(new ContactData(element.Text)
+                    { Id = element.FindElement(By.TagName("input")).GetAttribute("value") });
+                }
             }
-            return contacts;
+            return new List<ContactData>(contactCache);
+        }
+
+        public int GetContactCount()
+        {
+            return driver.FindElements(By.CssSelector("tr[name=entry]")).Count;
         }
 
         public void CreateContactForTests()
         {
             if (IsContactCreated() == false)
             {
-                ContactData contact = new ContactData("Denis", "Yavorskiy");
+                ContactData contact = new ContactData("Denis");
+                contact.LastName = "Yavorskiy";
                 contact.MiddleName = "Timourovich";
 
                 Create(contact);
