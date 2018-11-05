@@ -13,6 +13,12 @@ namespace WebAddressbookTests
             FirstName = firstname;
         }
 
+        public ContactData(string lastname, string firstname)
+        {
+            LastName = lastname;
+            FirstName = firstname;
+        }
+
         public string FirstName { get; set; }
         public string MiddleName { get; set; }
         public string LastName { get; set; }
@@ -50,7 +56,7 @@ namespace WebAddressbookTests
 
         public override string ToString()
         {
-            return "firstname = " + FirstName + " lastname = " + LastName;
+            return " lastname = " + LastName + " firstname = " + FirstName;
         }
 
         public int CompareTo(ContactData other)

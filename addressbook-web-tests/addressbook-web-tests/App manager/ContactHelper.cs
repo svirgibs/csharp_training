@@ -59,7 +59,8 @@ namespace WebAddressbookTests
 
                 foreach (IWebElement element in elements)
                 {
-                    contactCache.Add(new ContactData(element.Text)
+                    var cells = element.FindElements(By.CssSelector("td"));
+                    contactCache.Add(new ContactData(cells[1].Text, cells[2].Text)
                     { Id = element.FindElement(By.TagName("input")).GetAttribute("value") });
                 }
             }
