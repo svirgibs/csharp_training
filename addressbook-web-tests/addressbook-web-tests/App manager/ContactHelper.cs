@@ -92,6 +92,7 @@ namespace WebAddressbookTests
         public ContactHelper ContactNewSubmit()
         {
             driver.FindElement(By.Name("submit")).Click();
+            contactCache = null;
             return this;
         }
 
@@ -113,6 +114,7 @@ namespace WebAddressbookTests
         {
             driver.FindElement(By.CssSelector("input[value='Delete']")).Click();
             driver.SwitchTo().Alert().Accept();
+            contactCache = null;
             return this;
         }
 
@@ -125,6 +127,7 @@ namespace WebAddressbookTests
         public ContactHelper SubmitContactModification()
         {
             driver.FindElement(By.Name("update")).Click();
+            contactCache = null;
             return this;
         }
 
